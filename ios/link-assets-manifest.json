@@ -1,0 +1,41 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "app/assets/fonts/EncodeSansSemiExpanded-Black.ttf",
+      "sha1": "1d68f2a75830d5603f0c28059ee18c2790b3a4d6"
+    },
+    {
+      "path": "app/assets/fonts/EncodeSansSemiExpanded-Bold.ttf",
+      "sha1": "66993fa820f6ce932d0499acf3bc74a644963016"
+    },
+    {
+      "path": "app/assets/fonts/EncodeSansSemiExpanded-ExtraBold.ttf",
+      "sha1": "8e5bab4d0888d190122487d68aab81be228a4f9d"
+    },
+    {
+      "path": "app/assets/fonts/EncodeSansSemiExpanded-ExtraLight.ttf",
+      "sha1": "40673882483a4a3e7705f575fef24481b8622aed"
+    },
+    {
+      "path": "app/assets/fonts/EncodeSansSemiExpanded-Light.ttf",
+      "sha1": "a9304bed5df5b5f8b1ae30b0cd702ba22e890bd6"
+    },
+    {
+      "path": "app/assets/fonts/EncodeSansSemiExpanded-Medium.ttf",
+      "sha1": "396b95f9a86444a3af8383b509b508892649ea78"
+    },
+    {
+      "path": "app/assets/fonts/EncodeSansSemiExpanded-Regular.ttf",
+      "sha1": "1ed640a5f927265b83169ad1baf7de83eddc2d0d"
+    },
+    {
+      "path": "app/assets/fonts/EncodeSansSemiExpanded-SemiBold.ttf",
+      "sha1": "b89596003f52b4321ca45fd5c52e9b64f196e98e"
+    },
+    {
+      "path": "app/assets/fonts/EncodeSansSemiExpanded-Thin.ttf",
+      "sha1": "0ada1378eec45e78469c9ca9beeadf70e91e58b3"
+    }
+  ]
+}
