@@ -14,18 +14,23 @@ function App(): React.JSX.Element {
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen
-                name={Routes.Home.Name}
-                component={Routes.Home.Screen}
-                options={{headerShown: false, animation: 'fade'}}
-                />
-                <Stack.Screen
-                name={Routes.Game.Name}
-                component={Routes.Game.Screen}
-                options={{headerShown: false, animation: 'fade'}}
-                />
-            </Stack.Navigator>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name={Routes.Home.Name}
+                        component={Routes.Home.Screen}
+                        options={{headerShown: false, animation: 'fade'}}
+                    />
+                    <Stack.Screen
+                        name={Routes.Game.Name}
+                        component={Routes.Game.Screen}
+                        options={{headerShown: false, animation: 'fade'}}
+                    />
+                    <Stack.Screen
+                        name={Routes.Settings.Name}
+                        component={Routes.Settings.Screen}
+                        options={{headerShown: false, animation: 'fade'}}
+                    />
+                </Stack.Navigator>
             </NavigationContainer>
         </PersistGate>
     </Provider>

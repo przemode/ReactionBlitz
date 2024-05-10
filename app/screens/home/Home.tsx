@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { Image, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSpring, withTiming } from 'react-native-reanimated';
+import Animated, { useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
+import megaScaleAnimation from '../../animations/megaScaleAnimation';
+import menuButtonClickAnimation from '../../animations/menuButtonClickAnimation';
+import playButtonMenuAnimation from '../../animations/playButtonMenuAnimation';
 import AnimatedButton from '../../components/animatedButton/AnimatedButton';
 import MenuButton from '../../components/menuButton/MenuButton';
 import styles from './styles';
-
 
 function Home({navigation}: any): React.JSX.Element {
 
@@ -21,19 +23,9 @@ function Home({navigation}: any): React.JSX.Element {
         return unsubscribe;
     }, [navigation]);
 
-
-    const animatedExit = useAnimatedStyle(() => {
-        return {
-            transform: [
-                {translateX: withSpring(offset.value * 20)},
-                {rotate: withSpring(`${rotation.value}deg`)}
-            ],
-        };
-    });
-
-    const animatedScale = useAnimatedStyle(() => {
-        return {transform: [{scale: withSpring(scale.value * 2, {damping: 16})}]};
-    });
+    const menuButtonClickAnim = menuButtonClickAnimation(offset, rotation)
+    const megaScaleAnim = megaScaleAnimation(scale)
+    const animatedExit = playButtonMenuAnimation(offset, rotation)
 
     const exitAnimation = (): void => {
         rotation.value = 15;
@@ -45,9 +37,17 @@ function Home({navigation}: any): React.JSX.Element {
 
     }
 
-    const test = (): void => {
-        console.log("TEST")
+    const navigateSettings = (): void => {
+        rotation.value = -15;
+        offset.value = withDelay(300, withTiming(-55))
+        setTimeout(() => {
+            navigation.navigate('Settings')
+        }, 450)
     } 
+
+    const test = (): void => {
+        console.log('xd')
+    }
 
     return (
       <View style={styles.mainHomeContainer}>
@@ -57,16 +57,16 @@ function Home({navigation}: any): React.JSX.Element {
               source={require('../../assets/images/blitzlogo.png')}
               />
           </View>
-          <Animated.View style={[styles.startButton, animatedScale]}>
+          <Animated.View style={[styles.startButton, megaScaleAnim, menuButtonClickAnim]}>
               <AnimatedButton onPress={exitAnimation}/>
           </Animated.View>
-          <Animated.View style={[styles.menuButton, animatedExit]}>
+          <Animated.View style={[styles.menuButton, animatedExit, menuButtonClickAnim]}>
               <MenuButton buttonText='Ranking' onPress={test}/>
           </Animated.View>
-          <Animated.View style={[styles.menuButton, animatedExit]}>
-              <MenuButton buttonText='Settings' onPress={test}/>
+          <Animated.View style={[styles.menuButton, animatedExit, menuButtonClickAnim]}>
+              <MenuButton buttonText='Settings' onPress={navigateSettings}/>
           </Animated.View>
-          <Animated.View style={[styles.menuButton, animatedExit]}>
+          <Animated.View style={[styles.menuButton, animatedExit, menuButtonClickAnim]}>
               <MenuButton buttonText='Exit' onPress={test}/>
           </Animated.View>
       </View>

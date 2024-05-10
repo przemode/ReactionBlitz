@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import counterReducer from './slices/counterSlice'
+import playerSettingsSlice from './slices/playerSettingsSlice';
 
 const rootReducer = combineReducers({
-    counter: counterReducer
+    playerSettings: playerSettingsSlice,
 })
 
 export default rootReducer
