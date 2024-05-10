@@ -1,16 +1,20 @@
-import React, { useEffect, useId, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
-import styles from './styles';
-import Block from '../../models/Block';
 import 'react-native-get-random-values';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { v1 as uuidv1 } from 'uuid';
+import Block from '../../models/Block';
+import styles from './styles';
 
+interface BlocksGridProps {
+    row: number;
+    col: number;
+  }
 
-function BlocksGrid(): React.JSX.Element {
+function BlocksGrid({row, col}: BlocksGridProps): React.JSX.Element {
 
-    const rows: number = 5;
-    const columns: number = 5;
+    const rows: number = row;
+    const columns: number = col;
     const windowWidth = Dimensions.get('window').width;
     const elementWidth: number = windowWidth * 0.9 / columns - 20;
     const elementHeight: number = 500 / rows - 20;
@@ -23,11 +27,7 @@ function BlocksGrid(): React.JSX.Element {
         for (let i = 0; i < rows; i++) {
             let tempRow: any = []
             for (let j = 0; j < columns; j++) {
-                let block = new Block()
-                
-                block.id = uuidv1()
-                block.col = i
-                block.row = j
+                let block = new Block(uuidv1(), i, j)
                 tempRow.push(block)
             }
             gridArray2D.push(tempRow)

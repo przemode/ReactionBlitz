@@ -1,8 +1,8 @@
 enum EDificultLevel {
-    Easy = "EASY",
-    Medium = "MEDIUM",
-    Hard = "HARD",
-    Extreme = "EXTREME",
+    Easy = "Easy",
+    Medium = "Medium",
+    Hard = "Hard",
+    Extreme = "Extreme",
 }
 
 export default EDificultLevel;
