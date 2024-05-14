@@ -1,0 +1,31 @@
+{
+    "firstLevelConfig": {
+        "currentLevel": 1,
+        "iterations": 5,
+        "minAvgTime": 1.0
+    },
+    "iterationRatio": 1,
+    "minAvgRatio": 0.99,
+    "dificultyLevel": {
+        "Easy": {
+            "col": 4,
+            "row": 4,
+            "delayTime": 1000
+        },
+        "Medium": {
+            "col": 5,
+            "row": 5,
+            "delayTime": 500
+        },
+        "Hard": {
+            "col": 6,
+            "row": 6,
+            "delayTime": 100
+        },
+        "Extreme": {
+            "col": 7,
+            "row": 7,
+            "delayTime": 1
+        }
+    }
+}

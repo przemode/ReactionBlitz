@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'space-around',
     color: '#fff',
-    fontSize: 15,
+    fontSize: 13,
     fontFamily: 'EncodeSansSemiExpanded-Bold'
   },
   timeText: {

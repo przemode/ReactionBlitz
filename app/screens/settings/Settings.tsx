@@ -50,7 +50,7 @@ function Settings({navigation}: any): React.JSX.Element {
           </View>
 
           <Animated.View style={[styles.menuButton, animatedExit]}>
-              <SettingsButton buttonText={playerSettings.level} titleText='Difficult Level:' onPress={handleChangeDifficultLevel}/>
+              <SettingsButton buttonText={playerSettings.dificultyLevel} titleText='Difficult Level:' onPress={handleChangeDifficultLevel}/>
           </Animated.View>
           <Animated.View style={[styles.menuButton, animatedExit]}>
               <SettingsButton buttonText='English' titleText='language:' onPress={test}/>

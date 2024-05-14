@@ -9,7 +9,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 interface ScoreHeaderProps {
   level: number;
   time: number;
-  difficultyLevel: EDificultLevel;
+  difficultyLevel: string;
 }
 
 function ScoreHeader({level, time, difficultyLevel}: ScoreHeaderProps): React.JSX.Element {
@@ -48,7 +48,7 @@ function ScoreHeader({level, time, difficultyLevel}: ScoreHeaderProps): React.JS
             <Animated.View style={[styles.timeContainer, animatedTimeEnter]}>
                     <Icon name="clock" size={20} color="#febf00" />
                 <Text style={styles.timeText}>
-                    {time}
+                    {time == undefined ? '0.0' : time} s
                 </Text>
             </Animated.View>
             <Animated.View style={[styles.levelContainer]}>

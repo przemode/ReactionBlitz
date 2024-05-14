@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: '#000',
     width: '90%',
-    marginTop: 50,
     borderRadius: 20,
     height: 500,
     alignSelf: 'center',

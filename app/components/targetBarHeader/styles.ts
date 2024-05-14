@@ -1,11 +1,6 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  mainHomeContainer: {
-    backgroundColor: '#febf02',
-    flex: 1,
-  },
-  
   targetContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -31,14 +26,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'EncodeSansSemiExpanded-Bold',
     fontSize: 13,
+    marginLeft: 4,
   },
   targetItemTextTitle: {
     color: '#fff',
     fontSize: 10,
     textAlign: 'center',
     fontFamily: 'EncodeSansSemiExpanded-Bold',
+  },
+  targetItemTextIcon: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row'
   }
-  
 });
 
 export default styles;
