@@ -16,6 +16,7 @@ import MainGameButton from '../../components/mainGameButton/MainGameButton';
 import { setupNextLevel } from '../../redux/slices/playerSettingsSlice'
 import TargetBarHeader from '../../components/targetBarHeader/TargetBarHeader';
 import Counter from '../../components/counter/Counter';
+import SummaryResultPopup from '../../components/summaryResultPopup/SummaryResultPopup';
 
 function Game({navigation}: any): React.JSX.Element {
     const dispatch = useDispatch()
@@ -30,6 +31,9 @@ function Game({navigation}: any): React.JSX.Element {
     const [isPlaying, setIsPlaying] = useState<Boolean>(false)
     const [currentIteration, setCurrentIteration] = useState<number>(1)
     const [isCounter, setIsCounter] = useState<boolean>(false)
+
+    const [isFinalPopop, setIsFinalPopup] = useState<boolean>(false)
+    const [isWinner, setIsWinner] = useState<boolean>(true)
 
     
 
@@ -75,11 +79,11 @@ function Game({navigation}: any): React.JSX.Element {
                 stop()
                 if(avgTime <= playerSettings.currentLevel.avgReactionTime){
                     dispatch(setupNextLevel())
-                    console.log("____WIN____")
+                    setIsWinner(true)
                 } else{
-                    console.log("____GAME OVER____")
+                    setIsWinner(false)
                 }
-                console.log(playerSettings)
+                setIsFinalPopup(true)
             }
 
         }
@@ -118,6 +122,14 @@ function Game({navigation}: any): React.JSX.Element {
     return (
         <View style={styles.mainHomeContainer}>
 
+            {isFinalPopop && 
+                <SummaryResultPopup
+                    avgReaction={0.671}
+                    isSuccess={isWinner}
+                    onPress={() => setIsFinalPopup(false)}
+                />
+            }
+            
 
             {isCounter && <Counter/>}
 

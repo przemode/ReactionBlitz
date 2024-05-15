@@ -1,0 +1,80 @@
+import React, { useEffect } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import Animated, { Easing, ReduceMotion, useSharedValue, withDelay, withRepeat, withSequence, withTiming } from 'react-native-reanimated';
+import styles from './styles';
+import IconFA6 from 'react-native-vector-icons/FontAwesome6';
+import IconMCI from 'react-native-vector-icons/MaterialCommunityIcons'
+import MenuButton from '../menuButton/MenuButton';
+import { popupEntering } from '../../animations/popupEntering';
+import { boltAnimation } from '../../animations/boltAnimation';
+import { snailAnimation } from '../../animations/snailAnimation';
+
+interface MenuButtonProps {
+  onPress: () => void;
+  isSuccess: boolean,
+  avgReaction: number;
+}
+
+function SummaryResultPopup({onPress, isSuccess, avgReaction}: MenuButtonProps): React.JSX.Element {
+
+    const scale = useSharedValue<number>(0)
+    const rotation = useSharedValue<number>(180);
+    const translateX = useSharedValue<number>(-100)
+    const opacity = useSharedValue<number>(0.01)
+
+    const scaleAnim = popupEntering(scale)
+    const rotationAnim = boltAnimation(rotation)
+    const translateXAnim = snailAnimation(translateX, opacity)
+
+
+    useEffect(() => {
+        scale.value = withTiming(1)
+        rotation.value = withDelay(1000, withTiming(1))
+        translateX.value = withDelay(1000, withTiming(1, {
+            duration: 1450,
+            easing: Easing.inOut(Easing.quad),
+            reduceMotion: ReduceMotion.System,
+        }))
+        opacity.value = withDelay(1000, withTiming(1, {
+            duration: 600,
+        }))
+    }, [])
+
+    useEffect(() => {
+        console.log(avgReaction)
+    }, [])
+
+    return (
+        <View style={styles.mainContainer}>
+            <Animated.View style={[styles.mainPopup, scaleAnim]}>
+                <View style={styles.header}>
+                    {isSuccess ? (<>
+                        <Animated.View style={[rotationAnim]}>
+                            <IconFA6 name="bolt" size={60} color="#000" />
+                        </Animated.View>
+                        <Text style={styles.title}>Winner</Text>
+                        <Text style={styles.subTitle}>You are fast!</Text>
+                    </>) : (<>
+                        <Animated.View style={[translateXAnim]}>
+                            <IconMCI name="snail" size={60} color="#000" />
+                        </Animated.View>
+                        <Text style={styles.title}>Lost</Text>
+                        <Text style={styles.subTitle}>You are slow!</Text>
+                    </>)}
+                    
+                </View>
+                <View style={styles.content}>
+                    <Text style={styles.finalReactionTimeTextTitle}>
+                        Your average time:
+                    </Text>
+                    <Text style={styles.finalReactionTimeText}>
+                    {avgReaction} s
+                    </Text>
+                    <MenuButton buttonText='ok' onPress={onPress}/>
+                </View>
+            </Animated.View>
+        </View>
+    );
+}
+
+export default SummaryResultPopup;
