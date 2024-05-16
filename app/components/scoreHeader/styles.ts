@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     justifyContent: 'center',
-    fontSize: 25,
+    fontSize: 20,
     fontFamily: 'EncodeSansSemiExpanded-Bold'
   }
 });
