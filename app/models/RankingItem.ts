@@ -1,4 +1,4 @@
-export default class Ranking {
+export default class RankingItem {
     level?: number;
     avgTime?: number;
   

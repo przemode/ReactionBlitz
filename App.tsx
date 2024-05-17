@@ -30,6 +30,11 @@ function App(): React.JSX.Element {
                         component={Routes.Settings.Screen}
                         options={{headerShown: false, animation: 'fade'}}
                     />
+                    <Stack.Screen
+                        name={Routes.Ranking.Name}
+                        component={Routes.Ranking.Screen}
+                        options={{headerShown: false, animation: 'fade'}}
+                    />
                 </Stack.Navigator>
             </NavigationContainer>
         </PersistGate>

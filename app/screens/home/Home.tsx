@@ -37,11 +37,11 @@ function Home({navigation}: any): React.JSX.Element {
 
     }
 
-    const navigateSettings = (): void => {
+    const navigateToScreen = (screenName: string): void => {
         rotation.value = -15;
         offset.value = withDelay(300, withTiming(-55))
         setTimeout(() => {
-            navigation.navigate('Settings')
+            navigation.navigate(screenName)
         }, 450)
     } 
 
@@ -61,10 +61,10 @@ function Home({navigation}: any): React.JSX.Element {
               <AnimatedButton onPress={exitAnimation}/>
           </Animated.View>
           <Animated.View style={[styles.menuButton, animatedExit, menuButtonClickAnim]}>
-              <MenuButton buttonText='Ranking' onPress={test}/>
+              <MenuButton buttonText='Ranking' onPress={() => navigateToScreen('Ranking')}/>
           </Animated.View>
           <Animated.View style={[styles.menuButton, animatedExit, menuButtonClickAnim]}>
-              <MenuButton buttonText='Settings' onPress={navigateSettings}/>
+              <MenuButton buttonText='Settings' onPress={() => navigateToScreen('Settings')}/>
           </Animated.View>
           <Animated.View style={[styles.menuButton, animatedExit, menuButtonClickAnim]}>
               <MenuButton buttonText='Exit' onPress={test}/>

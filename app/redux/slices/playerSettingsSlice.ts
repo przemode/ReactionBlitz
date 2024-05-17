@@ -2,7 +2,7 @@ import { createSlice, current } from '@reduxjs/toolkit'
 import EDificultLevel from '../../enums/EDificultLevel'
 import Block from '../../models/Block';
 import LevelConfig from '../../LevelConfig.json'
-import Ranking from '../../models/Ranking';
+import RankingItem from '../../models/RankingItem';
 
 interface RankingRecord {
     level: number;
@@ -28,7 +28,7 @@ export const playerSettingsSlice = createSlice({
         avgReactionTime: LevelConfig.firstLevelConfig.minAvgTime,
         iterations: LevelConfig.firstLevelConfig.iterations,
     },
-    ranking:[] as Ranking[]
+    ranking:[] as RankingItem[]
   },
   reducers: {
     changeDifficultLevel: (state) => {

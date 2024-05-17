@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   text: {
     color: '#febf00',
     fontSize: 20,
-    fontFamily: 'EncodeSansSemiExpanded-Regular',
+    fontFamily: 'EncodeSansSemiExpanded-Bold',
     textTransform: 'uppercase',
   }
 });
