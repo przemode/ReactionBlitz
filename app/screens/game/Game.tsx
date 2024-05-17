@@ -78,10 +78,8 @@ function Game({navigation}: any): React.JSX.Element {
                 stop()
                 if(avgTime <= playerSettings.currentLevel.avgReactionTime){
                     dispatch(setRanking({level: playerSettings.currentLevel.currentLevel, avgTime}))
-                    console.log(playerSettings.ranking)
-                    dispatch(setupNextLevel())
-                    
                     setIsWinner(true)
+                    dispatch(setupNextLevel())
                 } else{
                     setIsWinner(false)
                 }
@@ -126,7 +124,7 @@ function Game({navigation}: any): React.JSX.Element {
 
             {isFinalPopop && 
                 <SummaryResultPopup
-                    avgReaction={0.671}
+                    avgReaction={AvgArray(reactionTimes)}
                     isSuccess={isWinner}
                     onPress={() => setIsFinalPopup(false)}
                 />

@@ -19,7 +19,7 @@ function Ranking({navigation}: any): React.JSX.Element {
     const rankingHeaderAnim = rankingHeaderAnimation(perspective)
 
     useEffect(() => {
-        setRankingArr(rankingState.reverse())
+        setRankingArr(rankingState)
         setRefresh(!refresh)
         perspective.value = withTiming(1, {
             duration: 500,
@@ -40,8 +40,8 @@ function Ranking({navigation}: any): React.JSX.Element {
          <ScrollView>
             {rankingArr.map((rank: RankingItem, index: number) => {
                 return(
-                    <Animated.View entering={BounceInUp.springify(2000)}  >
-                        <RecordRow key={index} avgTime={rank.avgTime} level={rank.level}/>
+                    <Animated.View key={index} entering={BounceInUp.springify(2000)}  >
+                        <RecordRow avgTime={rank.avgTime} level={rank.level}/>
                     </Animated.View>
                 )
             })}

@@ -68,7 +68,7 @@ function SummaryResultPopup({onPress, isSuccess, avgReaction}: MenuButtonProps):
                         Your average time:
                     </Text>
                     <Text style={styles.finalReactionTimeText}>
-                    {avgReaction} s
+                    {avgReaction.toFixed(3)} s
                     </Text>
                     <MenuButton buttonText='ok' onPress={onPress}/>
                 </View>
