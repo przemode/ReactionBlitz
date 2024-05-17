@@ -2,6 +2,17 @@ import { createSlice, current } from '@reduxjs/toolkit'
 import EDificultLevel from '../../enums/EDificultLevel'
 import Block from '../../models/Block';
 import LevelConfig from '../../LevelConfig.json'
+import Ranking from '../../models/Ranking';
+
+interface RankingRecord {
+    level: number;
+    avgTime: number;
+}
+
+interface SetRankingAction {
+    type: string;
+    payload: RankingRecord;
+}
 
 export const playerSettingsSlice = createSlice({
   name: 'playerSettings',
@@ -16,7 +27,8 @@ export const playerSettingsSlice = createSlice({
         currentLevel: LevelConfig.firstLevelConfig.currentLevel,
         avgReactionTime: LevelConfig.firstLevelConfig.minAvgTime,
         iterations: LevelConfig.firstLevelConfig.iterations,
-    }
+    },
+    ranking:[] as Ranking[]
   },
   reducers: {
     changeDifficultLevel: (state) => {
@@ -58,10 +70,14 @@ export const playerSettingsSlice = createSlice({
         state.currentLevel.currentLevel += 1
         state.currentLevel.iterations += LevelConfig.iterationRatio
         state.currentLevel.avgReactionTime =  state.currentLevel.avgReactionTime * LevelConfig.minAvgRatio
+    },
+    setRanking: (state, action: SetRankingAction) => {
+        let rankingRecord = [ ...state?.ranking, action.payload ]
+        state.ranking = rankingRecord
     }
   }
 })
 
-export const { changeDifficultLevel, changeGridSize, setupNextLevel } = playerSettingsSlice.actions
+export const { changeDifficultLevel, changeGridSize, setupNextLevel, setRanking } = playerSettingsSlice.actions
 
 export default playerSettingsSlice.reducer

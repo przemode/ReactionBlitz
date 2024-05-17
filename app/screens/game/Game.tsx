@@ -10,10 +10,9 @@ import GenerateGrid from '../../logic/GenerateGrid';
 import Block from '../../models/Block';
 import MilisecondsToSeconds from '../../utils/Miliseconds'
 import { AvgArray } from '../../utils/Math'
-import LevelConfig from '../../LevelConfig.json'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import MainGameButton from '../../components/mainGameButton/MainGameButton';
-import { setupNextLevel } from '../../redux/slices/playerSettingsSlice'
+import { setupNextLevel, setRanking } from '../../redux/slices/playerSettingsSlice'
 import TargetBarHeader from '../../components/targetBarHeader/TargetBarHeader';
 import Counter from '../../components/counter/Counter';
 import SummaryResultPopup from '../../components/summaryResultPopup/SummaryResultPopup';
@@ -78,7 +77,10 @@ function Game({navigation}: any): React.JSX.Element {
                 let avgTime = AvgArray(reactionTimes)
                 stop()
                 if(avgTime <= playerSettings.currentLevel.avgReactionTime){
+                    dispatch(setRanking({level: playerSettings.currentLevel.currentLevel, avgTime}))
+                    console.log(playerSettings.ranking)
                     dispatch(setupNextLevel())
+                    
                     setIsWinner(true)
                 } else{
                     setIsWinner(false)
@@ -100,8 +102,8 @@ function Game({navigation}: any): React.JSX.Element {
     const start = () => {
         setIsCounter(true)
         setIsPlaying(true)
-        if(currentIteration === 0) setReactionTimes([])
         
+        if(currentIteration === 0) setReactionTimes([])
         setTimeout(() => {
             setIsCounter(false)
             runNextIteration()
