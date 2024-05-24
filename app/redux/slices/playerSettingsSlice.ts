@@ -72,7 +72,7 @@ export const playerSettingsSlice = createSlice({
         state.currentLevel.avgReactionTime =  state.currentLevel.avgReactionTime * LevelConfig.minAvgRatio
     },
     setRanking: (state, action: SetRankingAction) => {
-        let rankingRecord = [ ...state?.ranking, action.payload ]
+        let rankingRecord = [action.payload, ...state?.ranking]
         state.ranking = rankingRecord
     }
   }

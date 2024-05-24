@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
-import Animated, { BounceInDown, BounceInUp, FadeIn, FadeInDown, FadeInRight, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { BounceIn, BounceInDown, BounceInLeft, BounceInUp, BounceOutUp, FadeIn, FadeInDown, FadeInRight, FadingTransition, useSharedValue, withTiming } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSelector } from 'react-redux';
 import RecordRow from '../../components/recordRow/RecordRow';
@@ -11,16 +11,15 @@ import { rankingHeaderAnimation } from '../../animations/rankingHeaderAnimation'
 function Ranking({navigation}: any): React.JSX.Element {
  
     const rankingState: RankingItem[] = useSelector((state: any) => state.playerSettings.ranking)
-    const [rankingArr, setRankingArr] = useState<RankingItem[]>([])
-    const [refresh, setRefresh] = useState<boolean>(false)
-
     const perspective = useSharedValue(90);
+    const [isExtistRank, setIsExistRank] = useState<boolean>(false)
 
     const rankingHeaderAnim = rankingHeaderAnimation(perspective)
 
     useEffect(() => {
-        setRankingArr(rankingState)
-        setRefresh(!refresh)
+        
+        if(rankingState.length > 0 ) setIsExistRank(true)
+
         perspective.value = withTiming(1, {
             duration: 500,
         })
@@ -37,15 +36,21 @@ function Ranking({navigation}: any): React.JSX.Element {
                 Ranking
             </Text>
          </Animated.View>
-         <ScrollView>
-            {rankingArr.map((rank: RankingItem, index: number) => {
-                return(
-                    <Animated.View key={index} entering={BounceInUp.springify(2000)}  >
-                        <RecordRow avgTime={rank.avgTime} level={rank.level}/>
-                    </Animated.View>
-                )
-            })}
-         </ScrollView>
+         {isExtistRank ?
+                <ScrollView>
+                    {rankingState.map((rank: RankingItem, index: number) => {
+                        return(
+                            <Animated.View key={index} entering={BounceInUp.springify(2000)}  >
+                                <RecordRow avgTime={rank.avgTime} level={rank.level}/>
+                            </Animated.View>
+                        )
+                    })}
+                </ScrollView>
+            :
+                <Animated.View style={styles.emptyRankingContainer} entering={FadeInDown.springify(2000)}>
+                    <Text style={styles.emptyRankingText}>You don't have any rankings</Text>
+                </Animated.View>
+            }
       </View>
     );
 }

@@ -65,7 +65,7 @@ function Game({navigation}: any): React.JSX.Element {
             
             let clickTime = MilisecondsToSeconds(endTime?.getTime() - startTime!.getTime())
 
-            setSummaryClickTime(clickTime)
+            setSummaryClickTime(clickTime.toFixed(3))
             let reactionTimesTemp = reactionTimes
             reactionTimesTemp.push(clickTime)
             setReactionTimes(reactionTimesTemp)

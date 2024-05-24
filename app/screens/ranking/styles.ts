@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: '#fff',
     borderWidth: 5,
+    zIndex: 2,
   },
   headerText: {
     textAlign: 'center',
@@ -29,6 +30,24 @@ const styles = StyleSheet.create({
   iconHeaderContainer: {
     marginRight: 10,
   },
+  emptyRankingContainer: {
+    zIndex: 0,
+    backgroundColor: '#000',
+    width: '85%',
+    alignSelf: 'center',
+    marginTop: 20,
+    borderRadius: 20,
+    height: 300,
+    justifyContent: 'center',
+    borderColor: '#fff',
+    borderWidth: 5,
+  },
+  emptyRankingText: {
+    color: '#fff',
+    fontSize: 16,
+    fontFamily: 'EncodeSansSemiExpanded-ExtraBold',
+    textAlign: 'center',
+  }
 });
 
 export default styles;
