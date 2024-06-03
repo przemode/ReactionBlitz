@@ -1,14 +1,7 @@
-import React, {useEffect} from 'react';
-import {Text, TouchableOpacity} from 'react-native';
-import Animated, {
-  Easing,
-  useAnimatedStyle,
-  useSharedValue,
-  withRepeat,
-  withTiming,
-} from 'react-native-reanimated';
+import React from 'react';
+import { Text, TouchableOpacity } from 'react-native';
+import Animated from 'react-native-reanimated';
 import styles from './styles';
-import Icon from 'react-native-vector-icons/AntDesign';
 
 
 interface MenuButtonProps {

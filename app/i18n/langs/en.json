@@ -1,0 +1,39 @@
+{
+    "translation": {
+        "home": {
+            "ranking": "Ranking",
+            "settings": "Settings",
+            "exit": "Exit"
+        },
+        "settings": {
+            "difficultLevel": "Difficult Level",
+            "language": "Language:",
+            "removeData": "Remove Data",
+            "resetGame": "Reset Game",
+            "lang": "English",
+            "easy": "easy",
+            "medium": "medium",
+            "hard": "hard",
+            "extreme": "extreme"
+        },
+        "ranking": {
+            "title": "Ranking",
+            "youdonthaveranking": "You don't have any rankings",
+            "level": "Level",
+            "time": "Time"
+        },
+        "game": {
+            "targetBarHeader": {
+                "minAverageTime": "Min. average time",
+                "numberOfReactions": "Number of reactions"
+            },
+            "summaryResultPopup": {
+                "winner": "Winner",
+                "youAreFast": "You are fast!",
+                "lost": "Lost",
+                "youAreSlow": "You are slow!",
+                "yourAverageTime": "Your average time"
+            }
+        }
+   }
+}

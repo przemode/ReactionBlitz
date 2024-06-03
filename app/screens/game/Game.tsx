@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import styles from './styles';
-import ScoreHeader from '../../components/scoreHeader/ScoreHeader';
-import EDificultLevel from '../../enums/EDificultLevel';
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome6';
+import { useDispatch, useSelector } from 'react-redux';
 import BlocksGrid from '../../components/blocksGrid/BlocksGrid';
-import { useSelector, useDispatch } from 'react-redux';
-import { store } from '../../redux/store'
+import Counter from '../../components/counter/Counter';
+import MainGameButton from '../../components/mainGameButton/MainGameButton';
+import ScoreHeader from '../../components/scoreHeader/ScoreHeader';
+import SummaryResultPopup from '../../components/summaryResultPopup/SummaryResultPopup';
+import TargetBarHeader from '../../components/targetBarHeader/TargetBarHeader';
 import GenerateGrid from '../../logic/GenerateGrid';
 import Block from '../../models/Block';
-import MilisecondsToSeconds from '../../utils/Miliseconds'
-import { AvgArray } from '../../utils/Math'
-import Icon from 'react-native-vector-icons/FontAwesome6'
-import MainGameButton from '../../components/mainGameButton/MainGameButton';
-import { setupNextLevel, setRanking } from '../../redux/slices/playerSettingsSlice'
-import TargetBarHeader from '../../components/targetBarHeader/TargetBarHeader';
-import Counter from '../../components/counter/Counter';
-import SummaryResultPopup from '../../components/summaryResultPopup/SummaryResultPopup';
+import { setRanking, setupNextLevel } from '../../redux/slices/playerSettingsSlice';
+import { AvgArray } from '../../utils/Math';
+import MilisecondsToSeconds from '../../utils/Miliseconds';
+import styles from './styles';
 
 function Game({navigation}: any): React.JSX.Element {
     const dispatch = useDispatch()
@@ -60,7 +58,6 @@ function Game({navigation}: any): React.JSX.Element {
             })
             setGeneratedGrid(tempArr)
             
-            
             let endTime = new Date();
             
             let clickTime = MilisecondsToSeconds(endTime?.getTime() - startTime!.getTime())
@@ -85,7 +82,6 @@ function Game({navigation}: any): React.JSX.Element {
                 }
                 setIsFinalPopup(true)
             }
-
         }
     }
 
@@ -116,9 +112,6 @@ function Game({navigation}: any): React.JSX.Element {
         setCurrentIteration(0)
     }
 
-    
-
-    
     return (
         <View style={styles.mainHomeContainer}>
 
@@ -130,7 +123,6 @@ function Game({navigation}: any): React.JSX.Element {
                 />
             }
             
-
             {isCounter && <Counter/>}
 
             <ScoreHeader 
@@ -143,7 +135,6 @@ function Game({navigation}: any): React.JSX.Element {
                 minAvgTime={playerSettings.currentLevel.avgReactionTime}
                 numberOfIterations={playerSettings.currentLevel.iterations}
             />
-
 
             <BlocksGrid 
                 grid={generatedGrid} 

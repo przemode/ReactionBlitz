@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from 'react-native';
 import 'react-native-get-random-values';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
-import { v1 as uuidv1 } from 'uuid';
 import Block from '../../models/Block';
 import styles from './styles';
-import GenerateGrid from '../../logic/GenerateGrid';
 
 interface BlocksGridProps {
     row: number;

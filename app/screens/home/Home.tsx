@@ -6,13 +6,16 @@ import menuButtonClickAnimation from '../../animations/menuButtonClickAnimation'
 import playButtonMenuAnimation from '../../animations/playButtonMenuAnimation';
 import AnimatedButton from '../../components/animatedButton/AnimatedButton';
 import MenuButton from '../../components/menuButton/MenuButton';
+import { useTranslation } from 'react-i18next';
 import styles from './styles';
 
 function Home({navigation}: any): React.JSX.Element {
-
+    const {t} = useTranslation();
     const offset = useSharedValue<number>(0);
     const rotation = useSharedValue<number>(0);
     const scale = useSharedValue<number>(0.6);
+
+    
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
@@ -61,13 +64,13 @@ function Home({navigation}: any): React.JSX.Element {
               <AnimatedButton onPress={exitAnimation}/>
           </Animated.View>
           <Animated.View style={[styles.menuButton, animatedExit, menuButtonClickAnim]}>
-              <MenuButton buttonText='Ranking' onPress={() => navigateToScreen('Ranking')}/>
+              <MenuButton buttonText={t('home.ranking')} onPress={() => navigateToScreen('Ranking')}/>
           </Animated.View>
           <Animated.View style={[styles.menuButton, animatedExit, menuButtonClickAnim]}>
-              <MenuButton buttonText='Settings' onPress={() => navigateToScreen('Settings')}/>
+              <MenuButton buttonText={t('home.settings')} onPress={() => navigateToScreen('Settings')}/>
           </Animated.View>
           <Animated.View style={[styles.menuButton, animatedExit, menuButtonClickAnim]}>
-              <MenuButton buttonText='Exit' onPress={test}/>
+              <MenuButton buttonText={t('home.exit')} onPress={test}/>
           </Animated.View>
       </View>
     );

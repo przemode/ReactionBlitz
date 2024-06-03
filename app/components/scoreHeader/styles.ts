@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   mainContainer:{
     backgroundColor: '#000',
-    width: '80%',
+    width: '85%',
     height: 50,
     alignSelf: 'center',
     marginTop: 30,
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'space-around',
     color: '#fff',
-    fontSize: 13,
+    fontSize: 12,
     fontFamily: 'EncodeSansSemiExpanded-Bold'
   },
   timeText: {

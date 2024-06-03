@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
-import Animated, { BounceIn, BounceInDown, BounceInLeft, BounceInUp, BounceOutUp, FadeIn, FadeInDown, FadeInRight, FadingTransition, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { BounceInUp, FadeInDown, useSharedValue, withTiming } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSelector } from 'react-redux';
+import { rankingHeaderAnimation } from '../../animations/rankingHeaderAnimation';
 import RecordRow from '../../components/recordRow/RecordRow';
 import RankingItem from '../../models/RankingItem';
 import styles from './styles';
-import { rankingHeaderAnimation } from '../../animations/rankingHeaderAnimation';
+import { useTranslation } from 'react-i18next';
 
 function Ranking({navigation}: any): React.JSX.Element {
- 
+    const {t} = useTranslation()
     const rankingState: RankingItem[] = useSelector((state: any) => state.playerSettings.ranking)
     const perspective = useSharedValue(90);
     const [isExtistRank, setIsExistRank] = useState<boolean>(false)
@@ -33,7 +34,7 @@ function Ranking({navigation}: any): React.JSX.Element {
                     <Icon name="trophy" size={25} color="#f8a500" />
                 </View>
             <Text style={styles.headerText}>
-                Ranking
+                {t('ranking.title')}
             </Text>
          </Animated.View>
          {isExtistRank ?
@@ -48,7 +49,7 @@ function Ranking({navigation}: any): React.JSX.Element {
                 </ScrollView>
             :
                 <Animated.View style={styles.emptyRankingContainer} entering={FadeInDown.springify(2000)}>
-                    <Text style={styles.emptyRankingText}>You don't have any rankings</Text>
+                    <Text style={styles.emptyRankingText}>{t('ranking.youdonthaveranking')}</Text>
                 </Animated.View>
             }
       </View>

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import Animated, { Easing, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
-import styles from './styles';
+import { Text, View } from 'react-native';
+import Animated, { useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 import { counterAnimation } from '../../animations/counterAnimation';
+import styles from './styles';
 
 
 

@@ -1,0 +1,39 @@
+{
+    "translation": {
+        "home": {
+            "ranking": "Ranking",
+            "settings": "Ustawienia",
+            "exit": "Wyjdź"
+        },
+        "settings": {
+            "difficultLevel": "Poziom trudności:",
+            "language": "Język:",
+            "removeData": "Usuń dane",
+            "resetGame": "Resetuj Grę:",
+            "lang": "Polski",
+            "easy": "Łatwy",
+            "medium": "Normalny",
+            "hard": "Trudny",
+            "extreme": "Ekspert"
+        },
+        "ranking": {
+            "title": "Ranking",
+            "youdonthaveranking": "Nie posiadasz jeszcze rankingu",
+            "level": "Poziom",
+            "time": "Czas"
+        },
+        "game": {
+            "targetBarHeader": {
+                "minAverageTime": "Min. średni czas",
+                "numberOfReactions": "Liczba reakcji"
+            },
+            "summaryResultPopup": {
+                "winner": "Wygrana",
+                "youAreFast": "Jesteś szybki!",
+                "lost": "Przegrana",
+                "youAreSlow": "Jesteś zbyt wolny!",
+                "yourAverageTime": "Twój średni czas"
+            }
+        }
+   }
+}

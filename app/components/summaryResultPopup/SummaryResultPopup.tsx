@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import Animated, { Easing, ReduceMotion, useSharedValue, withDelay, withRepeat, withSequence, withTiming } from 'react-native-reanimated';
-import styles from './styles';
+import { Text, View } from 'react-native';
+import Animated, { Easing, ReduceMotion, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 import IconFA6 from 'react-native-vector-icons/FontAwesome6';
-import IconMCI from 'react-native-vector-icons/MaterialCommunityIcons'
-import MenuButton from '../menuButton/MenuButton';
-import { popupEntering } from '../../animations/popupEntering';
+import IconMCI from 'react-native-vector-icons/MaterialCommunityIcons';
 import { boltAnimation } from '../../animations/boltAnimation';
+import { popupEntering } from '../../animations/popupEntering';
 import { snailAnimation } from '../../animations/snailAnimation';
+import MenuButton from '../menuButton/MenuButton';
+import styles from './styles';
+import { useTranslation } from 'react-i18next';
 
 interface MenuButtonProps {
   onPress: () => void;
@@ -16,7 +17,7 @@ interface MenuButtonProps {
 }
 
 function SummaryResultPopup({onPress, isSuccess, avgReaction}: MenuButtonProps): React.JSX.Element {
-
+    const { t } = useTranslation()
     const scale = useSharedValue<number>(0)
     const rotation = useSharedValue<number>(180);
     const translateX = useSharedValue<number>(-100)
@@ -52,20 +53,20 @@ function SummaryResultPopup({onPress, isSuccess, avgReaction}: MenuButtonProps):
                         <Animated.View style={[rotationAnim]}>
                             <IconFA6 name="bolt" size={60} color="#000" />
                         </Animated.View>
-                        <Text style={styles.title}>Winner</Text>
-                        <Text style={styles.subTitle}>You are fast!</Text>
+                        <Text style={styles.title}>{t('game.summaryResultPopup.winner')}</Text>
+                        <Text style={styles.subTitle}>{t('game.summaryResultPopup.youAreFast')}</Text>
                     </>) : (<>
                         <Animated.View style={[translateXAnim]}>
                             <IconMCI name="snail" size={60} color="#000" />
                         </Animated.View>
-                        <Text style={styles.title}>Lost</Text>
-                        <Text style={styles.subTitle}>You are slow!</Text>
+                        <Text style={styles.title}>{t('game.summaryResultPopup.lost')}</Text>
+                        <Text style={styles.subTitle}>{t('game.summaryResultPopup.youAreSlow')}</Text>
                     </>)}
                     
                 </View>
                 <View style={styles.content}>
                     <Text style={styles.finalReactionTimeTextTitle}>
-                        Your average time:
+                        {t('game.summaryResultPopup.yourAverageTime')}:
                     </Text>
                     <Text style={styles.finalReactionTimeText}>
                     {avgReaction.toFixed(3)} s

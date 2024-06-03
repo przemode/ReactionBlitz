@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
-import { Image, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSpring, withTiming } from 'react-native-reanimated';
+import { useTranslation } from 'react-i18next';
+import { Image, Text, View } from 'react-native';
+import Animated, { useSharedValue } from 'react-native-reanimated';
+import { useDispatch, useSelector } from 'react-redux';
 import menuButtonClickAnimation from '../../animations/menuButtonClickAnimation';
 import SettingsButton from '../../components/settingsButton/SettingsButton';
+import { changeDifficultLevel, changeGridSize, changeLanguage } from '../../redux/slices/playerSettingsSlice';
+import { store } from '../../redux/store';
 import styles from './styles';
-import { store } from '../../redux/store'
-import { useDispatch, useSelector } from 'react-redux';
-import { changeDifficultLevel, changeGridSize } from '../../redux/slices/playerSettingsSlice'
-import EDificultLevel from '../../enums/EDificultLevel';
 
 
 function Settings({navigation}: any): React.JSX.Element {
 
+    const {t} = useTranslation();
     const dispatch = useDispatch()
     const playerSettings = useSelector((state: any) => state.playerSettings)
 
@@ -34,7 +35,11 @@ function Settings({navigation}: any): React.JSX.Element {
     const handleChangeDifficultLevel = (): void => {
         dispatch(changeDifficultLevel())
         dispatch(changeGridSize())
-    } 
+    }
+
+    const handleChangeLanguage = (): void => {
+        dispatch(changeLanguage())
+    }
 
     const test = () => {
         console.log(JSON.stringify(store.getState().playerSettings))
@@ -48,15 +53,27 @@ function Settings({navigation}: any): React.JSX.Element {
               source={require('../../assets/images/blitzlogo.png')}
               />
           </View>
-
+          
           <Animated.View style={[styles.menuButton, animatedExit]}>
-              <SettingsButton buttonText={playerSettings.dificultyLevel} titleText='Difficult Level:' onPress={handleChangeDifficultLevel}/>
+                <SettingsButton
+                    buttonText={t(`settings.${playerSettings.dificultyLevel.toLowerCase()}`)}
+                    titleText={t('settings.difficultLevel')}
+                    onPress={handleChangeDifficultLevel}
+                />
           </Animated.View>
           <Animated.View style={[styles.menuButton, animatedExit]}>
-              <SettingsButton buttonText='English' titleText='language:' onPress={test}/>
+                <SettingsButton 
+                    buttonText={t('settings.lang')}
+                    titleText={t('settings.language')} 
+                    onPress={handleChangeLanguage}
+                />
           </Animated.View>
           <Animated.View style={[styles.menuButton, animatedExit]}>
-              <SettingsButton buttonText='Remove Data' titleText='Reset Game:' onPress={test}/>
+                <SettingsButton
+                    buttonText={t('settings.removeData')}
+                    titleText={t('settings.resetGame')}
+                    onPress={test}
+                />
           </Animated.View>
       </View>
     );

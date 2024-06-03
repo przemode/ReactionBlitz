@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { Text, View } from 'react-native';
-import EDificultLevel from '../../enums/EDificultLevel';
+import { Text } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
-import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import styles from './styles';
+import { useTranslation } from 'react-i18next';
 
 
 interface ScoreHeaderProps {
@@ -14,6 +14,7 @@ interface ScoreHeaderProps {
 
 function ScoreHeader({level, time, difficultyLevel}: ScoreHeaderProps): React.JSX.Element {
 
+    const {t} = useTranslation()
     const offset = useSharedValue<number>(-100);
 
 
@@ -54,7 +55,7 @@ function ScoreHeader({level, time, difficultyLevel}: ScoreHeaderProps): React.JS
             <Animated.View style={[styles.levelContainer]}>
                 <Icon name="gamepad" size={20} color="#febf00" />
                 <Text style={styles.normalText}>  
-                    {difficultyLevel}
+                    {t(`settings.${difficultyLevel.toLowerCase()}`)}
                 </Text>
             </Animated.View>
         </Animated.View>

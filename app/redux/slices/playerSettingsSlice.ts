@@ -1,7 +1,8 @@
-import { createSlice, current } from '@reduxjs/toolkit'
-import EDificultLevel from '../../enums/EDificultLevel'
-import Block from '../../models/Block';
-import LevelConfig from '../../LevelConfig.json'
+import { createSlice } from '@reduxjs/toolkit';
+import i18next from 'i18next';
+import LevelConfig from '../../LevelConfig.json';
+import EDificultLevel from '../../enums/EDificultLevel';
+import { languages } from '../../i18n/i18n';
 import RankingItem from '../../models/RankingItem';
 
 interface RankingRecord {
@@ -28,7 +29,8 @@ export const playerSettingsSlice = createSlice({
         avgReactionTime: LevelConfig.firstLevelConfig.minAvgTime,
         iterations: LevelConfig.firstLevelConfig.iterations,
     },
-    ranking:[] as RankingItem[]
+    ranking:[] as RankingItem[],
+    gameLanguage: "en"
   },
   reducers: {
     changeDifficultLevel: (state) => {
@@ -74,10 +76,16 @@ export const playerSettingsSlice = createSlice({
     setRanking: (state, action: SetRankingAction) => {
         let rankingRecord = [action.payload, ...state?.ranking]
         state.ranking = rankingRecord
+    },
+    changeLanguage: (state) => {
+        const currentIndex = languages.indexOf(state.gameLanguage);
+        const nextIndex = (currentIndex + 1) % languages.length;
+        state.gameLanguage = languages[nextIndex]
+        i18next.changeLanguage(languages[nextIndex])
     }
   }
 })
 
-export const { changeDifficultLevel, changeGridSize, setupNextLevel, setRanking } = playerSettingsSlice.actions
+export const { changeDifficultLevel, changeGridSize, setupNextLevel, setRanking, changeLanguage } = playerSettingsSlice.actions
 
 export default playerSettingsSlice.reducer
