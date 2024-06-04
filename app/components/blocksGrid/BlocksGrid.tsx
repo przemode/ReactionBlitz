@@ -17,8 +17,9 @@ function BlocksGrid({row, col, grid, onPressElement}: BlocksGridProps): React.JS
     const rows: number = row;
     const columns: number = col;
     const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
     const elementWidth: number = windowWidth * 0.9 / columns - 20;
-    const elementHeight: number = 500 / rows - 20;
+    const elementHeight: number = (windowHeight/2) / rows - 20;
     const scale = useSharedValue<number>(0);
     
 

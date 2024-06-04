@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
   mainHomeContainer: {
     backgroundColor: '#febf02',
     flex: 1,
+    height: '100%',
   },
   
   targetContainer: {

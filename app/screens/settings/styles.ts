@@ -4,20 +4,23 @@ const styles = StyleSheet.create({
   mainHomeContainer: {
     backgroundColor: '#febf02',
     flex: 1,
+    height: '100%',
+    width: '100%'
   },
   logoContainer: {
     backgroundColor: '#000',
-    paddingTop: 70,
-    paddingBottom: 70,
+    paddingTop: 40,
+    paddingBottom: 40,
     marginBottom: 50,
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
+    height: '35%',
   },
   logo: {
-    width: 250,
-    height: 210,
+    width: '100%',
+    height: '100%',
     resizeMode: 'contain',
   },
   startButton: {

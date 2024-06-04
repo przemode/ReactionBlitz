@@ -4,26 +4,29 @@ const styles = StyleSheet.create({
   mainHomeContainer: {
     backgroundColor: '#febf02',
     flex: 1,
+    height: '100%',
+    width: '100%'
   },
   logoContainer: {
     backgroundColor: '#000',
-    paddingTop: 70,
-    paddingBottom: 70,
+    paddingTop: 40,
+    paddingBottom: 40,
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
+    height: '35%',
   },
   logo: {
-    width: 250,
-    height: 210,
+    width: '100%',
+    height: '100%',
     resizeMode: 'contain',
   },
   startButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 45,
-    marginBottom: 45,
+    marginTop: 40,
+    marginBottom: 40,
   },
   menuButton: {
     alignItems: 'center',

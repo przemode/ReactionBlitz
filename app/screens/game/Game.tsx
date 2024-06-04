@@ -137,7 +137,7 @@ function Game({navigation}: any): React.JSX.Element {
             />
 
             <BlocksGrid 
-                grid={generatedGrid} 
+                grid={generatedGrid}
                 col={playerSettings.gridSize.col} 
                 row={playerSettings.gridSize.row}
                 onPressElement={onPressElement}
@@ -147,13 +147,13 @@ function Game({navigation}: any): React.JSX.Element {
                     <MainGameButton
                     buttonText='STOP GAME'
                     onPress={() => stop()}
-                    icon={<Icon name="stop" size={20} color="#f8a500" />}
+                    icon={<Icon name="stop" size={15} color="#f8a500" />}
                     />
                 :
                     <MainGameButton
                         buttonText='START'
                         onPress={() => start()}
-                        icon={<Icon name="bolt" size={20} color="#f8a500" />}
+                        icon={<Icon name="bolt" size={15} color="#f8a500" />}
                     />
                 }
       </View>
